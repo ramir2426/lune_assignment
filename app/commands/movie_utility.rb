@@ -1,5 +1,6 @@
 class MovieUtility
 	attr_accessor :name, :description, :year, :director, :location, :actor, :country
+	
 	def initialize(movie_data)
 		@name = movie_data['Movie']
 		@description = movie_data['Description']

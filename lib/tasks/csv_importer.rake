@@ -11,8 +11,9 @@ namespace :csv_importer do
 
 	desc "Import movie reviews from CSV"
 	task reviews: :environment do
-		CSV.foreach('lib/tasks/csv_files/review.csv', headers: true) do |row|
-			ReviewUtility.new(row)
+		CSV.foreach('lib/tasks/csv_files/reviews.csv', headers: true) do |row|
+			review_utility = ReviewUtility.new(row)
+			review_utility.create!
 		end
 	end
 

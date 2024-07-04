@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_04_201316) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "reviewer"
-    t.float "stars"
+    t.float "stars", default: 1.0
     t.text "review_text"
     t.bigint "movie_id", null: false
     t.datetime "created_at", null: false
