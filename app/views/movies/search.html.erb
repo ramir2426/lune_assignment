@@ -1,0 +1,47 @@
+<h1>Search Results</h1>
+<% if @movies.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Movie</th>
+        <th>Description</th>
+        <th>Year</th>
+        <th>Director</th>
+        <th>Actors</th>
+        <th>Filming Locations</th>
+        <th>Countries</th>
+        <th>Average Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.name %></td>
+          <td><%= movie.description %></td>
+          <td><%= movie.year %></td>
+          <td><%= movie.director %></td>
+          <td>
+            <% movie.actors.each do |actor| %>
+              <%= actor %><br>
+            <% end %>
+          </td>
+          <td>
+            <% movie.locations.each do |location| %>
+              <%= location %><br>
+            <% end %>
+          </td>
+          <td>
+            <% movie.countries.each do |country| %>
+              <%= country %><br>
+            <% end %>
+          </td>
+          <td><%= movie.reviews.average(:stars).to_f %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No movies found.</p>
+<% end %>
+
+<%= link_to 'Back to all movies', movies_path %>
